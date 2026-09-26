@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For Najd From Najd ❤️ From Saleh</title>
+  <style>
+    :root {
+      --primary: #be123c;
+      --primary-bright: #e11d48;
+      --secondary: #fb7185;
+      --accent: #fda4af;
+      --gold: #d97706;
+      --gold-light: #fef3c7;
+      --bg-start: #fff1f2;
+      --bg-mid: #ffe4e6;
+      --bg-end: #fce7f3;
+      --card-bg: rgba(255, 255, 255, 0.94);
+      --card-border: rgba(253, 164, 175, 0.6);
+      --text-main: #4c0519;
+      --text-muted: #881337;
+      --font-serif: Georgia, Cambria, serif;
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font-sans);
+      color: var(--text-main);
+      background: linear-gradient(135deg, var(--bg-start) 0%, var(--bg-mid) 50%, var(--bg-end) 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    #space-canvas, #confetti-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+    #space-canvas { z-index: 1; }
+    #confetti-canvas { z-index: 999; }
+
+    .container {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px 20px 90px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    /* Hero */
+    .hero { text-align: center; padding: 20px 0 10px; }
+
+    /* Her signature mark badge */
+    .signature-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, #fff1f2, #ffe4e6);
+      border: 1.5px solid var(--accent);
+      padding: 8px 20px;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 22px;
+      box-shadow: 0 4px 14px rgba(190, 18, 60, 0.08);
+      letter-spacing: 0.5px;
+    }
+
+    .monogram-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 90px;
+      height: 90px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-bright));
+      border-radius: 50%;
+      box-shadow: 0 12px 30px rgba(190, 18, 60, 0.35);
+      margin-bottom: 18px;
+      font-family: var(--font-serif);
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #fff;
+      border: 3px solid rgba(255, 255, 255, 0.85);
+      user-select: none;
+      animation: gentleFloat 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes gentleFloat {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-7px); }
+    }
+
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2.3rem, 5.5vw, 3.5rem);
+      color: var(--primary);
+      margin-bottom: 8px;
+      letter-spacing: -0.5px;
+    }
+
+    .hero-arabic {
+      font-size: 1.35rem;
+      color: var(--primary-bright);
+      margin-bottom: 14px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .hero-subtitle {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.65;
+    }
+
+    /* Cards */
+    .card {
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      border-radius: 26px;
+      border: 1px solid var(--card-border);
+      padding: 34px;
+      box-shadow: 0 14px 34px rgba(190, 18, 60, 0.08);
+    }
+
+    .card-title {
+      font-family: var(--font-serif);
+      font-size: 1.55rem;
+      color: var(--primary);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* Signature Quote Box */
+    .quote-banner {
+      background: linear-gradient(135deg, #fff7ed, #fff1f2);
+      border: 2px dashed #fcd34d;
+      border-radius: 20px;
+      padding: 24px 28px;
+      text-align: center;
+      position: relative;
+    }
+
+    .quote-text {
+      font-family: var(--font-serif);
+      font-size: 1.35rem;
+      font-style: italic;
+      color: var(--primary);
+      line-height: 1.6;
+    }
+
+    .quote-subtext {
+      font-size: 1rem;
+      color: var(--gold);
+      font-weight: 600;
+      margin-top: 8px;
+    }
+
+    /* Heartbeat Sync */
+    .sync-card {
+      text-align: center;
+      background: linear-gradient(145deg, #ffffff, #fff5f7);
+      border: 2px solid var(--accent);
+    }
+
+    .sync-heart {
+      width: 82px;
+      height: 82px;
+      background: #ffe4e6;
+      border: 2px solid var(--secondary);
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.3s ease;
+      margin: 20px 0 12px;
+    }
+
+    .sync-heart:active, .sync-heart.holding {
+      transform: scale(1.15);
+      background: var(--primary-bright);
+      box-shadow: 0 0 35px rgba(225, 29, 72, 0.6);
+    }
+
+    .sync-progress {
+      width: 100%;
+      max-width: 320px;
+      height: 10px;
+      background: #fee2e2;
+      border-radius: 999px;
+      overflow: hidden;
+      margin: 8px auto 0;
+    }
+
+    .sync-progress-bar {
+      width: 0%;
+      height: 100%;
+      background: linear-gradient(90deg, #fb7185, #e11d48);
+      transition: width 0.1s linear;
+    }
+
+    .sync-message {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      color: var(--primary);
+      min-height: 28px;
+      margin-top: 14px;
+      font-style: italic;
+    }
+
+    /* Wax-Sealed Letter */
+    .wax-envelope {
+      background: #fff8f9;
+      border: 2px dashed var(--accent);
+      border-radius: 20px;
+      padding: 36px 20px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+    .wax-envelope:hover {
+      border-color: var(--primary);
+      transform: translateY(-3px);
+    }
+
+    .wax-seal {
+      width: 76px;
+      height: 76px;
+      background: linear-gradient(135deg, #be123c, #881337);
+      color: #ffd1d9;
+      border-radius: 50%;
+      margin: 0 auto 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      box-shadow: 0 6px 20px rgba(136, 19, 55, 0.4);
+      border: 2px solid #fda4af;
+      text-align: center;
+      line-height: 1.2;
+    }
+
+    .letter-body {
+      display: none;
+      font-family: var(--font-serif);
+      font-size: 1.12rem;
+      line-height: 1.85;
+      color: var(--text-main);
+    }
+    .letter-body p { margin-bottom: 18px; }
+
+    .letter-signature {
+      margin-top: 24px;
+      text-align: right;
+      font-style: italic;
+      color: var(--primary);
+      font-size: 1.3rem;
+      font-weight: bold;
+    }
+
+    /* Promises */
+    .promises-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 16px;
+    }
+
+    .promise-card {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 18px 22px;
+      border-left: 5px solid var(--primary-bright);
+      border-top: 1px solid #fee2e2;
+      border-right: 1px solid #fee2e2;
+      border-bottom: 1px solid #fee2e2;
+      box-shadow: 0 4px 12px rgba(190, 18, 60, 0.04);
+      transition: transform 0.2s ease;
+    }
+    .promise-card:hover { transform: translateX(4px); }
+
+    .promise-num {
+      font-weight: 700;
+      color: var(--primary-bright);
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+    }
+
+    .promise-text {
+      color: var(--text-main);
+      font-size: 1.05rem;
+      line-height: 1.5;
+    }
+
+    /* Love Meter */
+    .meter-section { text-align: center; }
+    .meter-bar {
+      height: 20px;
+      background: #fee2e2;
+      border-radius: 999px;
+      overflow: hidden;
+      margin: 20px auto 14px;
+      border: 1px solid var(--accent);
+    }
+    .meter-fill {
+      width: 0%;
+      height: 100%;
+      background: linear-gradient(90deg, #fb7185, #be123c);
+      transition: width 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .meter-status {
+      font-weight: 700;
+      color: var(--primary);
+      font-size: 1.1rem;
+    }
+
+    .buttons-row {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .btn-yes {
+      background: #10b981;
+      color: #fff;
+      font-size: 1.1rem;
+      font-weight: 700;
+      padding: 14px 34px;
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      box-shadow: 0 6px 18px rgba(16, 185, 129, 0.35);
+      transition: transform 0.2s ease;
+    }
+    .btn-yes:hover { transform: scale(1.05); }
+
+    .btn-no {
+      background: #f1f5f9;
+      color: #64748b;
+      font-size: 0.95rem;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      padding-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="space-canvas"></canvas>
+  <canvas id="confetti-canvas"></canvas>
+
+  <div class="container">
+    <!-- Header -->
+    <header class="hero">
+      <div class="signature-pill">✨ “Najd from Najd” • نجد من نجد ✨</div>
+      <br>
+      <div class="monogram-badge">S & N</div>
+      <h1 class="hero-title">For My Najd, From Saleh</h1>
+      <div class="hero-arabic">صالح يحب نجد للأبد ❤️</div>
+      <p class="hero-subtitle">
+        You always say you are <em>Najd from Najd</em>... but to Saleh, you are the entire world.
+      </p>
+    </header>
+
+    <!-- Her Unique Signature Banner -->
+    <div class="quote-banner">
+      <div class="quote-text">
+        “She is Najd from Najd — timeless, proud, and breathtaking. And she has stolen Saleh's heart completely.”
+      </div>
+      <div class="quote-subtext">✨ Her Signature Mark ✨</div>
+    </div>
+
+    <!-- Heartbeat Sync -->
+    <section class="card sync-card">
+      <h2 class="card-title" style="justify-content: center;">💓 Hold To Feel Saleh's Heartbeat</h2>
+      <p style="color: var(--text-muted); font-size: 0.95rem;">
+        Press and hold the heart to synchronize with Saleh's pulse.
+      </p>
+
+      <div class="sync-heart" id="syncHeart">❤️</div>
+      <div class="sync-progress">
+        <div class="sync-progress-bar" id="syncBar"></div>
+      </div>
+      <div class="sync-message" id="syncMsg">Waiting for your touch, Najd...</div>
+    </section>
+
+    <!-- Wax Sealed Letter -->
+    <section class="card">
+      <div class="wax-envelope" id="waxEnvelope">
+        <div class="wax-seal">Najd<br>& Saleh</div>
+        <h3 style="color: var(--primary); margin-bottom: 6px;">A Letter For Najd from Najd</h3>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">Click the wax seal to break and read</p>
+      </div>
+
+      <div class="letter-body" id="letterBody">
+        <h2 class="card-title">Dearest Najd,</h2>
+        <p>
+          Every time you say with your unmistakable confidence and smile, <em>“I am Najd from Najd,”</em>
+          my heart skips a beat. You carry the name of a legendary, timeless land—but in my life, you represent something even greater:
+          my home, my calm, and my greatest blessing.
+        </p>
+        <p>
+          I built this page because ordinary words can never fully say what you mean to me.
+          Your laughter brings light to my days, your presence makes every moment memorable,
+          and knowing that I have you by my side is my proudest feeling.
+        </p>
+        <p>
+          You are one of a kind, my Najd. No matter where life takes us, my heart will always beat your name,
+          and I will always choose you, cherish you, and love you beyond measure.
+        </p>
+        <div class="letter-signature">
+          Forever & Always Yours,<br>
+          Saleh ❤️
+        </div>
+      </div>
+    </section>
+
+    <!-- Promises -->
+    <section class="card">
+      <h2 class="card-title">✨ Saleh’s 5 Promises to His Najd</h2>
+      <div class="promises-list">
+        <div class="promise-card">
+          <div class="promise-num">Promise 01</div>
+          <div class="promise-text">To honor and cherish you always, keeping your smile as my favorite priority.</div>
+        </div>
+        <div class="promise-card">
+          <div class="promise-num">Promise 02</div>
+          <div class="promise-text">To be your rock and safe harbor whenever the world feels loud or overwhelming.</div>
+        </div>
+        <div class="promise-card">
+          <div class="promise-num">Promise 03</div>
+          <div class="promise-text">To celebrate your pride, your spirit, and everything that makes you “Najd from Najd.”</div>
+        </div>
+        <div class="promise-card">
+          <div class="promise-num">Promise 04</div>
+          <div class="promise-text">To listen with an open heart, laugh with you, and never take our moments for granted.</div>
+        </div>
+        <div class="promise-card">
+          <div class="promise-num">Promise 05</div>
+          <div class="promise-text">To love you through every season of life—unconditionally, fiercely, and endlessly.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Love Meter -->
+    <section class="card meter-section">
+      <h2 class="card-title" style="justify-content: center;">One Final Question...</h2>
+      <p style="color: var(--text-muted);">Does Najd from Najd know how deeply Saleh loves her?</p>
+
+      <div class="meter-bar">
+        <div class="meter-fill" id="meterFill"></div>
+      </div>
+      <div class="meter-status" id="meterStatus">Calculating love level...</div>
+
+      <div class="buttons-row">
+        <button class="btn-yes" id="btnYes">YES, I DO! ❤️</button>
+        <button class="btn-no" id="btnNo">Tell me more 🙈</button>
+      </div>
+    </section>
+
+    <footer>
+      For Najd from Najd, with infinite love from Saleh. ✨
+    </footer>
+  </div>
+
+  <script>
+    /* ================= Web Audio Chime ================= */
+    let audioCtx = null;
+    function playChime(frequencies = [261.63, 329.63, 392.00, 523.25]) {
+      try {
+        if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+        const now = audioCtx.currentTime;
+        frequencies.forEach((freq, idx) => {
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(freq, now + idx * 0.14);
+          gain.gain.setValueAtTime(0.001, now + idx * 0.14);
+          gain.gain.exponentialRampToValueAtTime(0.18, now + idx * 0.14 + 0.04);
+          gain.gain.exponentialRampToValueAtTime(0.0001, now + idx * 0.14 + 1.2);
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.start(now + idx * 0.14);
+          osc.stop(now + idx * 0.14 + 1.3);
+        });
+      } catch (e) {}
+    }
+
+    /* ================= Space Particles ================= */
+    const spaceCanvas = document.getElementById('space-canvas');
+    const sCtx = spaceCanvas.getContext('2d');
+    let sWidth = spaceCanvas.width = window.innerWidth;
+    let sHeight = spaceCanvas.height = window.innerHeight;
+    const particles = [];
+
+    window.addEventListener('resize', () => {
+      sWidth = spaceCanvas.width = window.innerWidth;
+      sHeight = spaceCanvas.height = window.innerHeight;
+    });
+
+    for (let i = 0; i < 35; i++) {
+      particles.push({
+        x: Math.random() * sWidth,
+        y: Math.random() * sHeight,
+        r: Math.random() * 2 + 1,
+        vy: Math.random() * -0.5 - 0.2,
+        alpha: Math.random() * 0.5 + 0.2
+      });
+    }
+
+    function animateSpace() {
+      sCtx.clearRect(0, 0, sWidth, sHeight);
+      sCtx.fillStyle = '#f43f5e';
+      particles.forEach(p => {
+        p.y += p.vy;
+        if (p.y < 0) p.y = sHeight;
+        sCtx.globalAlpha = p.alpha;
+        sCtx.beginPath();
+        sCtx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        sCtx.fill();
+      });
+      requestAnimationFrame(animateSpace);
+    }
+    animateSpace();
+
+    /* ================= Confetti ================= */
+    const cCanvas = document.getElementById('confetti-canvas');
+    const cCtx = cCanvas.getContext('2d');
+    let confetti = [];
+
+    function burstConfetti() {
+      const colors = ['#be123c', '#e11d48', '#fb7185', '#f59e0b', '#10b981'];
+      for (let i = 0; i < 110; i++) {
+        confetti.push({
+          x: window.innerWidth / 2,
+          y: window.innerHeight / 2,
+          w: Math.random() * 9 + 5,
+          h: Math.random() * 6 + 4,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          vx: (Math.random() - 0.5) * 16,
+          vy: (Math.random() - 0.5) * 16 - 3,
+          rot: Math.random() * 360,
+          rotSpeed: (Math.random() - 0.5) * 12,
+          opacity: 1
+        });
+      }
+    }
+
+    function animateConfetti() {
+      cCtx.clearRect(0, 0, cCanvas.width, cCanvas.height);
+      for (let i = confetti.length - 1; i >= 0; i--) {
+        const c = confetti[i];
+        c.x += c.vx;
+        c.y += c.vy;
+        c.vy += 0.3;
+        c.rot += c.rotSpeed;
+        c.opacity -= 0.01;
+        if (c.opacity <= 0) { confetti.splice(i, 1); continue; }
+        cCtx.save();
+        cCtx.translate(c.x, c.y);
+        cCtx.rotate((c.rot * Math.PI) / 180);
+        cCtx.globalAlpha = c.opacity;
+        cCtx.fillStyle = c.color;
+        cCtx.fillRect(-c.w / 2, -c.h / 2, c.w, c.h);
+        cCtx.restore();
+      }
+      requestAnimationFrame(animateConfetti);
+    }
+    window.addEventListener('resize', () => {
+      cCanvas.width = window.innerWidth;
+      cCanvas.height = window.innerHeight;
+    });
+    cCanvas.width = window.innerWidth;
+    cCanvas.height = window.innerHeight;
+    animateConfetti();
+
+    /* ================= Heartbeat Sync ================= */
+    const syncHeart = document.getElementById('syncHeart');
+    const syncBar = document.getElementById('syncBar');
+    const syncMsg = document.getElementById('syncMsg');
+    let syncTimer = null;
+    let syncProgress = 0;
+
+    function startSync(e) {
+      e.preventDefault();
+      syncHeart.classList.add('holding');
+      syncMsg.textContent = "Connecting to Saleh's heartbeat...";
+      playChime([329.63, 392.00]);
+      syncTimer = setInterval(() => {
+        syncProgress += 4;
+        syncBar.style.width = syncProgress + '%';
+        if (syncProgress >= 100) {
+          clearInterval(syncTimer);
+          syncProgress = 100;
+          syncMsg.textContent = "❤️ Synced! Saleh’s heart beats solely for Najd from Najd.";
+          burstConfetti();
+          playChime([261.63, 329.63, 392.00, 523.25, 659.25]);
+        }
+      }, 50);
+    }
+
+    function stopSync() {
+      syncHeart.classList.remove('holding');
+      clearInterval(syncTimer);
+      if (syncProgress < 100) {
+        syncProgress = 0;
+        syncBar.style.width = '0%';
+        syncMsg.textContent = "Connection paused. Hold again to feel it!";
+      }
+    }
+
+    syncHeart.addEventListener('mousedown', startSync);
+    syncHeart.addEventListener('touchstart', startSync);
+    window.addEventListener('mouseup', stopSync);
+    window.addEventListener('touchend', stopSync);
+
+    /* ================= Wax Seal ================= */
+    const waxEnvelope = document.getElementById('waxEnvelope');
+    const letterBody = document.getElementById('letterBody');
+
+    waxEnvelope.addEventListener('click', () => {
+      waxEnvelope.style.display = 'none';
+      letterBody.style.display = 'block';
+      burstConfetti();
+      playChime([392.00, 523.25, 659.25]);
+    });
+
+    /* ================= Love Meter ================= */
+    const meterFill = document.getElementById('meterFill');
+    const meterStatus = document.getElementById('meterStatus');
+    const btnYes = document.getElementById('btnYes');
+    const btnNo = document.getElementById('btnNo');
+
+    setTimeout(() => {
+      meterFill.style.width = '100%';
+      meterStatus.textContent = '100,000,000% — Beyond All Limits ❤️';
+    }, 600);
+
+    btnYes.addEventListener('click', () => {
+      burstConfetti();
+      playChime([261.63, 329.63, 392.00, 523.25, 659.25]);
+      btnYes.textContent = 'Saleh Loves You Most! 🥰';
+      btnNo.style.display = 'none';
+    });
+
+    btnNo.addEventListener('mouseenter', () => {
+      btnNo.style.transform = `translate(${(Math.random() - 0.5) * 180}px, ${(Math.random() - 0.5) * 100}px)`;
+    });
+  </script>
+</body>
+</html>
